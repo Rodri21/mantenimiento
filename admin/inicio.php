@@ -1,18 +1,24 @@
 <?php
     session_start();
-    if(isset($_POST)){
-      
-    }
-    include('header.php');
 ?>
-<br><br>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de mantenimiento</title>
+  <!-- Incluimos los estilos de Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<?php
+    include('header.php');
+?><br>
 <body>
   <div class="container">
-    <h1>Mantenimiento</h1> <hr/> <br/>
-    <form>
-      <div class="row">
-        <!-- Columna 1 -->
-        <div class="col-md-6">
+    <div class="row">
+      <!-- Columna 1 -->
+      <div class="col-md-6">
+        <form>
           <div class="mb-3">
             <label for="departamento" class="form-label">Departamento</label>
             <select class="form-select" id="departamento">
@@ -39,33 +45,35 @@
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email">
           </div>
-        </div>
+        </form>
+      </div>
 
-        <!-- Columna 2 -->
-        <div class="col-md-6">
+      <!-- Columna 2 -->
+      <div class="col-md-6">
+        <form>
           <div class="mb-3">
             <label for="fecha-mtto" class="form-label">Fecha de mantenimiento</label>
             <input type="date" class="form-control" id="fecha-mtto">
           </div>
           <div class="mb-3">
-            <div class="form-floating">
-              <textarea class="form-control" name="observaciones" id="observaciones" rows="5" style="height: 100px; white-space: pre-wrap;"></textarea>
-              <label for="observaciones">Observaciones</label>
-            </div>
+            <label for="encargado" class="form-label">Encargado</label>
+            <select class="form-select" id="encargado">
+              <option selected>Seleccione una opción</option>
+              <option value="encargado1">Encargado 1</option>
+              <option value="encargado2">Encargado 2</option>
+              <option value="encargado3">Encargado 3</option>
+            </select>
           </div>
           <div class="mb-3">
-            <div class="form-floating">
-              <textarea class="form-control" name="herramientas" id="herramientas" rows="5" style="height: 100px; white-space: pre-wrap;"></textarea>
-              <label for="herramientas">Herramientas utilizadas</label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
+            <label for="tipo-mtto" class="form-label">Tipo de mantenimiento</label>
+            <select class="form-select" id="tipo-mtto">
+              <option selected>Seleccione una opción</option>
+              <option value="mtto1">Mantenimiento 1</option>
+              <option value="mtto2">Mantenimiento 2</option>
+              <option value="mtto3">M
+              </select>
       </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
   </div>
-</body>
-<?php
-    session_start();
-    include('footer.php');
-?>
+</div>

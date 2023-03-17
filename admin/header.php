@@ -1,6 +1,4 @@
-<?php
-    //session_start();
-?>
+
 	<!DOCTYPE html>
 	<html>
 	
@@ -13,12 +11,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
-	<?php
-	//if (isset($_SESSION['user_id'])) {
-	?>
+
 	<body>
 		<!-- Navbar de Bootstrap -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+		<nav class="navbar navbar-expand-lg text-white navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">Mantenimiento</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,34 +24,28 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Inicio</a>
-						</li>
-						<?php
-						if (isset($_SESSION['user_id'])) {
-						?>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Departamentos</a>
+							<a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Equipos</a>
+							<a class="nav-link" href="departamentos.php">Departamentos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Usuarios</a>
+							<a class="nav-link" href="equipos.php">Equipos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Personal</a>
+							<a class="nav-link" href="usuarios.php">Usuarios</a>
 						</li>
-						<?php
-						}
-						?>
 						<li class="nav-item">
-							<a class="nav-link" href="logout.php">Cerrar sesion</a>
+							<a class="nav-link" href="personal.php">Personal</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../logout.php">Cerrar sesion</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-	
+		<br>
 	</body>
 
 	</html>
