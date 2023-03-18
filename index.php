@@ -17,7 +17,7 @@
 			<div class="col-md-6">
 				<h2 class="text-center mb-4">Iniciar sesión</h2>
                 <hr>
-				<form action="login.php" method="post">
+				<form action="controllers/login.php" method="post">
 					<div class="form-group">
 						<label for="usuario">Usuario:</label>
 						<input type="text" name="usuario" id="usuario" class="form-control" required>

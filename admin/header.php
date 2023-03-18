@@ -1,11 +1,8 @@
 <?php
   require_once __DIR__ . '/../errors.php';
-  if (!isset($_SESSION['admin'])) {
-    header('Location: ../../index.php');
-    exit();
-  } elseif ($_SESSION['admin']=='false') {
-    header('Location: ../index.php');
-    exit();
+  if (empty($_SESSION['admin']) || $_SESSION['admin'] == 'false') {
+	header('Location: ../index.php');
+	exit();
   }
 ?>
 <!DOCTYPE html>

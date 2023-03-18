@@ -24,7 +24,7 @@ class Usuario{
         $cbo='';
         $result = $this->db->query('SELECT * FROM usuario WHERE esAdmin = false;');
         while($row = pg_fetch_assoc($result)){
-            $cbo .= "<option value='". $row["id_usuario"] ."'>" . $row["nombre"] . ' ' .$row["apellido_pa"]. ' ' .$row["apellido_ma"]. ' ' . "</option>";
+            $cbo .= "<option value='". $row["id_usuario"] ."'>" . $row["nombre"]. ' ' . "</option>";
         }
         echo $cbo;
     }

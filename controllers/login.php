@@ -1,24 +1,10 @@
 <?php
-// Inicia la sesión
+require_once __DIR__ . '/../errors.php';
 session_start();
-//header('Location: inicio.php');
-require_once('config.php');
-require_once 'database.php';
-
-require_once __DIR__ . '/errors.php';
-
-
-/*
-$conn_string = pg_connect("host=".DB_HOST." port=".DB_PORT." dbname=".DB_NAME." user=".DB_USER." password=".DB_PASSWORD);
-//$conn = pg_connect($conn_string);
-if (!$conn_string) {
-    echo "Error al conectar a la base de datos.";
-    exit;
-}
-*/
+require_once('../config.php');
+require_once '../database.php';
 
 $db = new Database();
-
 
 $result = $db->query("SELECT * FROM usuario");
 
@@ -30,10 +16,10 @@ $user = $db->get_user($usuario, $contrasena);
 if ($user) {
   if(esAdmin($db, $usuario, $contrasena)){
     $_SESSION['admin'] = 'true';
-    header('Location: admin/inicio.php');
+    header('Location: ../admin/inicio.php');
   } else{
     $_SESSION['admin'] = 'false';
-    header('Location: inicio.php');
+    header('Location: ../inicio.php');
   }
 } else {
   echo 'Usuario incorrecto';

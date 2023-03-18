@@ -1,10 +1,7 @@
 <?php
   require_once __DIR__ . '/../errors.php';
   session_start();
-  if (!isset($_SESSION['admin'])) {
-    header('Location: ../../index.php');
-    exit();
-  } elseif ($_SESSION['admin']=='false') {
+  if (empty($_SESSION['admin']) || $_SESSION['admin'] == 'false') {
     header('Location: ../index.php');
     exit();
   }
@@ -27,20 +24,25 @@
 </div>
 <hr>
 
-<div class="container">
-  <table class="table table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th>Id</th>
-        <th>Departamento</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-        $dep_obj->llenar_tabla();
-      ?>
-    </tbody>
-  </table>
-</div>
+<body>
+  <div class="container">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Departamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          $dep_obj->llenar_tabla();
+        ?>
+      </tbody>
+    </table>
+  </div>
+</body>
 
 
+<?php
+    include('../footer.php');
+?>

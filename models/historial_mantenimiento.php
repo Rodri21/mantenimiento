@@ -10,21 +10,25 @@ class HistorialMantenimiento{
 
     public function llenar_tabla(){
         $table = '';
-        $result = $this->db->query('SELECT * FROM historial_mantenimiento;');
+        $result = $this->db->query('
+            SELECT hm.id_historial, e.serie, hm.fecha_esperada, hm.fecha_real, hm.observaciones, u.nombre, hm.tipo_mantenimiento, hm.herramientas
+            FROM historial_mantenimiento hm
+            INNER JOIN equipo e ON hm.id_equipo = e.id_equipo
+            INNER JOIN usuario u ON hm.id_usuario = u.id_usuario;
+        ');
         while ($row = pg_fetch_assoc($result)) {
             $table .= '<tr>';
             $table .= "<td>" . $row["id_historial"] . "</td>";
-            $table .= "<td>" . $row["id_equipo"] . "</td>";
+            $table .= "<td>" . $row["serie"] . "</td>";
             $table .= "<td>" . $row["fecha_esperada"] . "</td>";
             $table .= "<td>" . $row["fecha_real"] . "</td>";
             $table .= "<td>" . $row["observaciones"] . "</td>";
-            $table .= "<td>" . $row["id_usuario"] . "</td>";
+            $table .= "<td>" . $row["nombre"] . "</td>";
             $table .= "<td>" . $row["tipo_mantenimiento"] . "</td>";
             $table .= "<td>" . $row["herramientas"] . "</td>";
             $table .= '</tr>';
         }
         echo $table;
     }
-
 }
 ?>
