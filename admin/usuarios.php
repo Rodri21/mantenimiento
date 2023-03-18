@@ -1,5 +1,15 @@
 <?php
-include('header.php');
+  require_once __DIR__ . '/../errors.php';
+  session_start();
+  if (!isset($_SESSION['admin'])) {
+    header('Location: ../../index.php');
+    exit();
+  } elseif ($_SESSION['admin']=='false') {
+    header('Location: ../index.php');
+    exit();
+  }
+  
+  include('header.php');
 ?>
 <div class="container">
     <h2>Nuevo usuario</h2>

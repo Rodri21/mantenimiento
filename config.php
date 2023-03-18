@@ -18,5 +18,4 @@ define('DB_USER', 'mantenimiento');
 define('DB_PASSWORD', 'Mantenimiento123');
 
 
-
 ?>

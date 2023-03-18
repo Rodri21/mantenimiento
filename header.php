@@ -1,5 +1,5 @@
 <?php
-    //session_start();
+    require_once __DIR__ . '/errors.php';
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -13,9 +13,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
-	<?php
-	//if (isset($_SESSION['user_id'])) {
-	?>
 	<body>
 		<!-- Navbar de Bootstrap -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">

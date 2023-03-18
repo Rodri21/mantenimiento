@@ -1,7 +1,18 @@
 <?php
-include('header.php');
-require_once 'models/departamentos.php';
-$dep_obj = new Departamentos();
+  require_once __DIR__ . '/../errors.php';
+  session_start();
+  if (!isset($_SESSION['admin'])) {
+    header('Location: ../../index.php');
+    exit();
+  } elseif ($_SESSION['admin']=='false') {
+    header('Location: ../index.php');
+    exit();
+  }
+
+  require_once __DIR__ . '/../models/departamentos.php';
+
+  include('header.php');
+  $dep_obj = new Departamentos();
 ?>
 <div class="container">
     <h2>Nuevo departamento</h2>

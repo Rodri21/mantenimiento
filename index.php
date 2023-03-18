@@ -9,6 +9,7 @@
 <body>
 	<?php
 	require_once('config.php');
+	require_once __DIR__ . '/errors.php';
 	include('header.php');
 	?>
     <div class="container mt-5">

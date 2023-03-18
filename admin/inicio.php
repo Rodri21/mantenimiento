@@ -1,5 +1,23 @@
 <?php
+    require_once __DIR__ . '/../errors.php';
     session_start();
+    if (!isset($_SESSION['admin'])) {
+      header('Location: ../../index.php');
+      exit();
+    } elseif ($_SESSION['admin']=='false') {
+      header('Location: ../index.php');
+      exit();
+    }
+
+    require_once('../models/departamentos.php');
+    require_once('../models/equipo.php');
+    require_once('../models/usuario.php');
+    require_once('../models/historial_mantenimiento.php');
+
+    $dep_obj = new Departamentos();
+    $equipo_obj = new Equipo();
+    $usuario_obj = new Usuario();
+    $hist_obj = new HistorialMantenimiento();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,19 +40,17 @@
           <div class="mb-3">
             <label for="departamento" class="form-label">Departamento</label>
             <select class="form-select" id="departamento">
-              <option selected>Seleccione una opción</option>
-              <option value="departamento1">Departamento 1</option>
-              <option value="departamento2">Departamento 2</option>
-              <option value="departamento3">Departamento 3</option>
+              <?php
+                $dep_obj->llenar_cbo();
+              ?>
             </select>
           </div>
           <div class="mb-3">
             <label for="maquina" class="form-label">Máquina</label>
             <select class="form-select" id="maquina">
-              <option selected>Seleccione una opción</option>
-              <option value="maquina1">Máquina 1</option>
-              <option value="maquina2">Máquina 2</option>
-              <option value="maquina3">Máquina 3</option>
+              <?php
+                $equipo_obj->llenar_cbo();
+              ?>
             </select>
           </div>
           <div class="mb-3">
@@ -58,19 +74,16 @@
           <div class="mb-3">
             <label for="encargado" class="form-label">Encargado</label>
             <select class="form-select" id="encargado">
-              <option selected>Seleccione una opción</option>
-              <option value="encargado1">Encargado 1</option>
-              <option value="encargado2">Encargado 2</option>
-              <option value="encargado3">Encargado 3</option>
+              <?php
+                $usuario_obj->llenar_cbo();
+              ?>
             </select>
           </div>
           <div class="mb-3">
             <label for="tipo-mtto" class="form-label">Tipo de mantenimiento</label>
             <select class="form-select" id="tipo-mtto">
-              <option selected>Seleccione una opción</option>
-              <option value="mtto1">Mantenimiento 1</option>
-              <option value="mtto2">Mantenimiento 2</option>
-              <option value="mtto3">M
+              <option value="mtto1">Preventivo</option>
+              <option value="mtto2">Correctivo</option>
               </select>
       </div>
       <button type="submit" class="btn btn-primary">Guardar</button>

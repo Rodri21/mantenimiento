@@ -1,8 +1,22 @@
 <?php
     session_start();
-    if(isset($_POST)){
-      
+    if (!isset($_SESSION['admin'])) {
+      header('Location: index.php');
+      exit();
     }
+
+    require_once __DIR__ . '/errors.php';
+
+    require_once('models/departamentos.php');
+    require_once('models/equipo.php');
+    require_once('models/usuario.php');
+    require_once('models/historial_mantenimiento.php');
+
+    $dep_obj = new Departamentos();
+    $equipo_obj = new Equipo();
+    $usuario_obj = new Usuario();
+    $hist_obj = new HistorialMantenimiento();
+
     include('header.php');
 ?>
 <br><br>
@@ -16,24 +30,26 @@
           <div class="mb-3">
             <label for="departamento" class="form-label">Departamento</label>
             <select class="form-select" id="departamento">
-              <option selected>Seleccione una opción</option>
-              <option value="departamento1">Departamento 1</option>
-              <option value="departamento2">Departamento 2</option>
-              <option value="departamento3">Departamento 3</option>
+              <?php
+                $dep_obj->llenar_cbo();
+              ?>
             </select>
           </div>
           <div class="mb-3">
             <label for="maquina" class="form-label">Máquina</label>
             <select class="form-select" id="maquina">
-              <option selected>Seleccione una opción</option>
-              <option value="maquina1">Máquina 1</option>
-              <option value="maquina2">Máquina 2</option>
-              <option value="maquina3">Máquina 3</option>
+              <?php
+                $equipo_obj->llenar_cbo();
+              ?>
             </select>
           </div>
           <div class="mb-3">
             <label for="usuario" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="usuario">
+            <select class="form-select" id="usuario">
+              <?php
+                $usuario_obj->llenar_cbo();
+              ?>
+            </select>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -64,8 +80,32 @@
       </div>
     </form>
   </div>
+
+  <hr>
+
+  <div class="container">
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Id</th>
+        <th>Equipo</th>
+        <th>Fecha_esp</th>
+        <th>Fecha_real</th>
+        <th>Observaciones</th>
+        <th>Personal</th>
+        <th>Tipo</th>
+        <th>Herramientas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        $hist_obj->llenar_tabla();
+      ?>
+    </tbody>
+  </table>
+</div>
+
 </body>
 <?php
-    session_start();
     include('footer.php');
 ?>

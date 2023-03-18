@@ -1,5 +1,7 @@
 <?php
-require_once '../database.php';
+require_once __DIR__ . '/../errors.php';
+require_once __DIR__ . '/../database.php';
+
 class Departamentos{
     private $db;
 
@@ -17,6 +19,15 @@ class Departamentos{
             $table .= '</tr>';
         }
         echo $table;
+    }
+
+    public function llenar_cbo(){
+        $cbo='';
+        $result = $this->db->query('SELECT * FROM departamento;');
+        while($row = pg_fetch_assoc($result)){
+            $cbo .= "<option value='". $row["id_departamento"] ."'>" . $row["departamento"] . "</option>";
+        }
+        echo $cbo;
     }
 }
 ?>
