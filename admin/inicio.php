@@ -1,33 +1,32 @@
 <?php
-    require_once __DIR__ . '/../errors.php';
     session_start();
     if (empty($_SESSION['admin']) || $_SESSION['admin'] == 'false') {
       header('Location: ../index.php');
       exit();
     }
+
+    require_once __DIR__ . '/../errors.php';
   
     require_once('../models/departamentos.php');
     require_once('../models/equipo.php');
     require_once('../models/usuario.php');
+    require_once('../models/usuario_equipo.php');
     require_once('../models/historial_mantenimiento.php');
 
+    $admin = $_SESSION['admin'];
     $dep_obj = new Departamentos();
     $equipo_obj = new Equipo();
     $usuario_obj = new Usuario();
+    $usuario_equipo_obj = new UsuarioEquipo();
     $hist_obj = new HistorialMantenimiento();
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de mantenimiento</title>
-  <!-- Incluimos los estilos de Bootstrap -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
-</head>
-<?php
+
     include('header.php');
-?><br>
+?>
+
+<br><br>
+
+<div id="myElement" data-admin="<?php echo $admin; ?>"></div>
+
 <body>
   <div class="container">
     <h1>Mantenimiento</h1>
@@ -46,7 +45,7 @@
             </div>
             <div class="mb-3">
               <label for="equipo" class="form-label">Equipo</label>
-              <select class="form-select" name="equipo">
+              <select class="form-select" name="equipo" id="equipo">
                 <?php
                   $equipo_obj->llenar_cbo();
                 ?>
@@ -54,11 +53,11 @@
             </div>
             <div class="mb-3">
               <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" name="usuario">
+              <input type="text" class="form-control" name="usuario" id="usuario" readonly>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" name="email">
+              <label for="correo" class="form-label">Correo</label>
+              <input type="text" class="form-control" name="correo" id="correo" readonly>
             </div>
         </div>
 
@@ -88,13 +87,13 @@
               <div class="col-2">
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
-              <div class="col-2">
-                <button class="btn btn-primary" onclick="window.location.href = '../report.php';">Reporte</button>
-              </div>
             </div>
         </div>
       </div>
     </form>
+    <div class="col-2">
+      <button class="btn btn-primary" onclick="window.location.href = '../qr/index.php';">Reporte</button>
+    </div>
   </div>
 
   <hr>
@@ -121,6 +120,7 @@
     </table>
   </div>
 </body>
+<script src="../js/historial_mantenimiento_admin.js"></script>
 <?php
     include('../footer.php');
 ?>

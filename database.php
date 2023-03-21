@@ -31,15 +31,5 @@ class Database{
     $result = $this->query($query);
     return pg_fetch_assoc($result);
   }
-  
-  /*
-  $result = pg_query($conn, "SELECT * FROM personal_mant");
-  while ($row = pg_fetch_assoc($result)) {
-    echo "ID: " . $row["id_personal"] . "<br>";
-    echo "Nombre: " . $row["nombre"] . "<br>";
-    echo "Usuario: " . $row["usuario"] . "<br>";
-    echo "Correo: " . $row["correo"] . "<br><br>";
-  }
-  */
 }
 ?>

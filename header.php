@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+		
 	</head>
 	<body>
 		<!-- Navbar de Bootstrap -->
@@ -25,7 +26,7 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Inicio</a>
+							<a class="nav-link active" aria-current="page" href="/mantenimiento/inicio.php">Inicio</a>
 						</li>
 						<?php
 						if (isset($_SESSION['user_id'])) {
@@ -46,7 +47,7 @@
 						}
 						?>
 						<li class="nav-item">
-							<a class="nav-link" href="logout.php">Cerrar sesion</a>
+							<a class="nav-link" href="/mantenimiento/logout.php">Cerrar sesion</a>
 						</li>
 					</ul>
 				</div>

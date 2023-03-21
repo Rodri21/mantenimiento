@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION['admin'])) {
+    if (empty($_SESSION['admin'])) {
       header('Location: index.php');
       exit();
     }
@@ -10,16 +10,22 @@
     require_once('models/departamentos.php');
     require_once('models/equipo.php');
     require_once('models/usuario.php');
+    require_once('models/usuario_equipo.php');
     require_once('models/historial_mantenimiento.php');
 
+    $admin = $_SESSION['admin'];
     $dep_obj = new Departamentos();
     $equipo_obj = new Equipo();
     $usuario_obj = new Usuario();
+    $usuario_equipo_obj = new UsuarioEquipo();
     $hist_obj = new HistorialMantenimiento();
 
     include('header.php');
 ?>
 <br><br>
+ 
+<div id="myElement" data-admin="<?php echo $admin; ?>"></div>
+
 <body>
   <div class="container">
     <h1>Mantenimiento</h1> <hr/> <br/>
@@ -28,32 +34,28 @@
         <!-- Columna 1 -->
         <div class="col-md-6">
           <div class="mb-3">
-            <label for="departamento" class="form-label">Departamento</label>
-            <select class="form-select" name="departamento">
+            <label for="hist" class="form-label">Clave mantenimiento</label>
+            <select class="form-select" name="hist" id="hist">
               <?php
-                $dep_obj->llenar_cbo();
+                $hist_obj->llenar_cbo();
               ?>
             </select>
+          </div>
+          <div class="mb-3">
+            <label for="departamento" class="form-label">Departamento</label>
+            <input type="text" class="form-control" name="departamento" id="departamento" readonly>
           </div>
           <div class="mb-3">
             <label for="equipo" class="form-label">Equipo</label>
-            <select class="form-select" name="equipo">
-              <?php
-                $equipo_obj->llenar_cbo();
-              ?>
-            </select>
+            <input type="text" class="form-control" name="equipo" id="equipo" readonly>
           </div>
           <div class="mb-3">
             <label for="usuario" class="form-label">Usuario</label>
-            <select class="form-select" name="usuario">
-              <?php
-                $usuario_obj->llenar_cbo();
-              ?>
-            </select>
+            <input type="text" class="form-control" name="usuario" id="usuario" readonly>
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="text" class="form-control" name="correo" id="correo" readonly>
           </div>
         </div>
 
@@ -80,13 +82,13 @@
             <div class="col-2">
               <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
-            <div class="col-2">
-              <button class="btn btn-primary" onclick="window.location.href = 'report.php';">Reporte</button>
-            </div>
           </div>
         </div>
       </div>
     </form>
+    <div class="col-2">
+      <button class="btn btn-primary" onclick="window.location.href = 'qr/index.php';">Reporte</button>
+    </div>
   </div>
 
   <hr>
@@ -114,6 +116,7 @@
 </div>
 
 </body>
+
 <?php
     include('footer.php');
 ?>

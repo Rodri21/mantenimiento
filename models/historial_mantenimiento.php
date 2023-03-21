@@ -30,5 +30,14 @@ class HistorialMantenimiento{
         }
         echo $table;
     }
+
+    public function llenar_cbo(){
+        $cbo='';
+        $result = $this->db->query('SELECT * FROM historial_mantenimiento;');
+        while($row = pg_fetch_assoc($result)){
+            $cbo .= "<option value='". $row["id_historial"] ."'>" . $row["id_historial"]. ' ' . "</option>";
+        }
+        echo $cbo;
+    }
 }
 ?>
