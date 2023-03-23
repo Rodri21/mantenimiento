@@ -23,7 +23,7 @@
 	<!-- Navbar de Bootstrap -->
 	<nav class="navbar navbar-expand-lg text-white navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Mantenimiento</a>
+			<a class="navbar-brand" href="/mantenimiento/admin/inicio.php">Mantenimiento</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -31,22 +31,22 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
+						<a class="nav-link active" aria-current="page" href="/mantenimiento/admin/inicio.php">Inicio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="departamentos.php">Departamentos</a>
+						<a class="nav-link" href="/mantenimiento/admin/departamentos.php">Departamentos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="equipos.php">Equipos</a>
+						<a class="nav-link" href="/mantenimiento/admin/equipos.php">Equipos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="usuarios.php">Usuarios</a>
+						<a class="nav-link" href="/mantenimiento/admin/usuarios.php">Usuarios</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="personal.php">Personal</a>
+						<a class="nav-link" href="/mantenimiento/admin/personal.php">Personal</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="../logout.php">Cerrar sesion</a>
+						<a class="nav-link" href="/mantenimiento/logout.php">Cerrar sesion</a>
 					</li>
 				</ul>
 			</div>

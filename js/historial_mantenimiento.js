@@ -7,7 +7,7 @@ $(document).ready(function() {
     if (admin === 'false') {
       $('#hist').change(function() {
         var hist = $(this).val(); 
-        updateElement('departamento', hist, 'controllers/historial_mantenimiento.php');
+        updateElement('departamento', hist, 'controllers/departamento.php');
         updateElement('equipo', hist, 'controllers/equipo.php');
         updateElement('usuario', hist, 'controllers/usuario_equipo.php');
         updateElement('correo', hist, 'controllers/usuario_equipo.php');
@@ -21,33 +21,32 @@ $(document).ready(function() {
       });
     }
   }
-  
 });
 
 function updateElement(elemento, valor, url) {
     
-    switch (elemento) {
-        case 'departamento':
-          data = { departamento: valor };break;
-        case 'equipo':
-          data = { equipo: valor };break;
-        case 'usuario':
-          data = { usuario: valor };break;
-        case 'correo':
-          data = { correo: valor };break;
-        default:
-          data = { departamento: valor };break;
+  switch (elemento) {
+    case 'departamento':
+      data = { departamento: valor };break;
+    case 'equipo':
+      data = { equipo: valor };break;
+    case 'usuario':
+      data = { usuario: valor };break;
+    case 'correo':
+      data = { correo: valor };break;
+    default:
+      data = { departamento: valor };break;
+  }
+  
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: data,
+    success: function(response) {
+        $('#' + elemento).val(response);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        alert('Error: ' + errorThrown);
     }
-    
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: data,
-        success: function(response) {
-            $('#' + elemento).val(response);
-        },
-        error: function(xhr, textStatus, errorThrown) {
-            alert('Error: ' + errorThrown);
-        }
-    });
+  });
 }

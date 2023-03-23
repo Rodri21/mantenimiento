@@ -31,7 +31,7 @@
       if (admin === 'false') {
         $('#hist').change(function() {
           var hist = $(this).val(); 
-          updateElement('departamento', hist, 'controllers/historial_mantenimiento.php');
+          updateElement('departamento', hist, 'controllers/departamento.php');
           updateElement('equipo', hist, 'controllers/equipo.php');
           updateElement('usuario', hist, 'controllers/usuario_equipo.php');
           updateElement('correo', hist, 'controllers/usuario_equipo.php');
