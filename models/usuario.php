@@ -28,5 +28,11 @@ class Usuario{
         }
         echo $cbo;
     }
+
+    public function mostrarNombre($id_usuario){
+        $res = $this->db->query("SELECT nombre FROM usuario WHERE id_usuario = $id_usuario;");
+        $row = pg_fetch_assoc($res);
+        echo $row['nombre'];
+    }
 }
 ?>

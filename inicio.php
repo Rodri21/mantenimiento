@@ -14,6 +14,7 @@
     require_once('models/historial_mantenimiento.php');
 
     $admin = $_SESSION['admin'];
+    $id_usuario = $_SESSION['id_usuario'];
     $dep_obj = new Departamentos();
     $equipo_obj = new Equipo();
     $usuario_obj = new Usuario();
@@ -28,7 +29,12 @@
 
 <body>
   <div class="container">
-    <h1>Mantenimiento</h1> <hr/> <br/>
+    <h1>Mantenimiento</h1>
+    <h4>Encargado: 
+      <?php
+        $usuario_obj->mostrarNombre($id_usuario);
+      ?>
+    </h4><hr><br>
     <form method='post' action='controllers/historial_mantenimiento.php'>
       <div class="row">
         <!-- Columna 1 -->
@@ -37,7 +43,7 @@
             <label for="hist" class="form-label">Clave mantenimiento</label>
             <select class="form-select" name="hist" id="hist">
               <?php
-                $hist_obj->llenar_cbo();
+                $hist_obj->llenar_cbo($id_usuario);
               ?>
             </select>
           </div>
@@ -102,14 +108,13 @@
         <th>Fecha_esp</th>
         <th>Fecha_real</th>
         <th>Observaciones</th>
-        <th>Personal</th>
         <th>Tipo</th>
         <th>Herramientas</th>
       </tr>
     </thead>
     <tbody>
       <?php
-        $hist_obj->llenar_tabla();
+        $hist_obj->llenar_tabla($id_usuario);
       ?>
     </tbody>
   </table>

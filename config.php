@@ -17,5 +17,6 @@ define('DB_NAME', 'mantenimiento_db');
 define('DB_USER', 'mantenimiento');
 define('DB_PASSWORD', 'Mantenimiento123');
 
-
+define('MAIL_USER', '');
+define('MAIL_PASS', '');
 ?>

@@ -19,6 +19,7 @@ if ($user) {
     header('Location: ../admin/inicio.php');
   } else{
     $_SESSION['admin'] = 'false';
+    $_SESSION['id_usuario'] = getId($db, $usuario);
     header('Location: ../inicio.php');
   }
 } else {
@@ -30,8 +31,15 @@ function esAdmin($db, $usuario, $contrasena){
     $res = $db->query("SELECT esadmin FROM usuario where usuario='$usuario' AND contrasena='$contrasena'");
     $row = pg_fetch_assoc($res);
     $esAdmin = $row['esadmin'];
-    var_dump($esAdmin);
     return $esAdmin=='t';
+}
+
+function getId($db, $usuario){
+  $res = $db->query("SELECT u.id_usuario FROM usuario u WHERE u.usuario = '$usuario';");
+  $row = pg_fetch_assoc($res);
+  $id_usuario = $row['id_usuario'];
+  var_dump($id_usuario);
+  return $id_usuario;
 }
 
 ?>

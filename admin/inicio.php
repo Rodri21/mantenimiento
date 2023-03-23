@@ -85,7 +85,7 @@
             <input type="text" name="admin" value="true" hidden>
             <div class="row">
               <div class="col-2">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary" name="guardar" id="guardar">Guardar</button>
               </div>
             </div>
         </div>
@@ -114,7 +114,7 @@
       </thead>
       <tbody>
         <?php
-          $hist_obj->llenar_tabla();
+          $hist_obj->llenar_tabla_admin();
         ?>
       </tbody>
     </table>
