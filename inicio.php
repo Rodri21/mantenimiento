@@ -91,10 +91,10 @@
           </div>
         </div>
       </div>
-    </form><!--
+    </form>
     <div class="col-2">
-      <button class="btn btn-primary" onclick="window.location.href = 'qr/index.php';">Reporte</button>
-    </div>-->
+      <button class="btn btn-primary" onclick="window.location.href = '/mantenimiento/reports/report.php';">Reporte</button>
+    </div>
   </div>
 
   <hr>

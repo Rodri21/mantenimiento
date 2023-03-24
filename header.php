@@ -6,7 +6,7 @@
 	
 	<head>
 		<meta charset="UTF-8">
-		<title>Navbar de Bootstrap</title>
+		<title>Mantenimiento</title>
 		<!-- Enlaces de los archivos de Bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">

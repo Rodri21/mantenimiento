@@ -7,7 +7,7 @@
   }
   include('header.php');
 
-  require_once __DIR__ . '/../models/usuario_equipo.php';
+  require_once __DIR__ . '/../models/propietario.php';
   $propietario_obj = new Propietario();
 
 ?>
