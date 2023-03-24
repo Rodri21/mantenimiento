@@ -1,21 +1,20 @@
 
 $(document).ready(function() {
-  // Almacenamos el valor de $admin en sessionStorage
   var admin = document.getElementById('myElement').getAttribute('data-admin');
-  if (admin) { //Comprueba que exista la variable admin
+  if (admin) { 
     if (admin === 'false') { //SIENDO ENCARGADO
+        var hist = $('#hist').val(); 
+        updateData('encargado', hist)
       $('#hist').change(function() {
         var hist = $(this).val(); 
-        updateElement('departamento', hist, 'controllers/departamento.php');
-        updateElement('equipo', hist, 'controllers/equipo.php');
-        updateElement('usuario', hist, 'controllers/usuario_equipo.php');
-        updateElement('correo', hist, 'controllers/usuario_equipo.php');
+        updateData('encargado', hist)
       });
     } else{ //SIENDO ADMIN
+      var equipo = $('#equipo').val(); 
+      updateData('admin', equipo)
       $('#equipo').change(function() {
-        var hist = $(this).val(); 
-        updateElement('usuario', hist, '../controllers/usuario_equipo.php');
-        updateElement('correo', hist, '../controllers/usuario_equipo.php');
+        var equipo = $(this).val(); 
+        updateData('admin', equipo)
       });
       $('#guardar').click(function() {
         alert("Registro guardado");
@@ -24,20 +23,31 @@ $(document).ready(function() {
   }
 });
 
+function updateData(rol, id) {
+  if (rol=='admin') {
+    updateElement('usuario', id, 'encargado', '../controllers/propietario.php');
+    updateElement('correo', id, 'encargado','../controllers/propietario.php');
+  } else{
+    updateElement('departamento', id, 'admin','controllers/departamento.php');
+    updateElement('equipo', id, 'admin','controllers/equipo.php');
+    updateElement('usuario', id, 'admin','controllers/propietario.php');
+    updateElement('correo', id, 'admin','controllers/propietario.php');
+  }
+}
 
-function updateElement(elemento, valor, url) {
+function updateElement(elemento, valor, rol, url) {
     
     switch (elemento) {
         case 'departamento':
-          data = { departamento: valor };break;
+          data = { departamento: valor, rol: rol };break;
         case 'equipo':
-          data = { equipo: valor };break;
+          data = { equipo: valor, rol: rol };break;
         case 'usuario':
-          data = { usuario: valor };break;
+          data = { usuario: valor, rol: rol };break;
         case 'correo':
-          data = { correo: valor };break;
+          data = { correo: valor, rol: rol };break;
         default:
-          data = { departamento: valor };break;
+          data = { departamento: valor, rol: rol };break;
     }
     
     $.ajax({

@@ -10,11 +10,17 @@ class Usuario{
 
     public function llenar_tabla(){
         $table = '';
-        $result = $this->db->query('SELECT * FROM usuario;');
+        $result = $this->db->query("SELECT id_usuario, nombre, usuario, contrasena, correo, 
+            CASE WHEN esAdmin = 't' THEN 'Admin' ELSE 'Personal' END AS rol 
+            FROM usuario;");
         while ($row = pg_fetch_assoc($result)) {
             $table .= '<tr>';
             $table .= "<td>" . $row["id_usuario"] . "</td>";
             $table .= "<td>" . $row["nombre"] . "</td>";
+            $table .= "<td>" . $row["usuario"] . "</td>";
+            $table .= "<td>" . $row["contrasena"] . "</td>";
+            $table .= "<td>" . $row["correo"] . "</td>";
+            $table .= "<td>" . $row["rol"] . "</td>";
             $table .= '</tr>';
         }
         echo $table;

@@ -10,14 +10,14 @@
     require_once('../models/departamentos.php');
     require_once('../models/equipo.php');
     require_once('../models/usuario.php');
-    require_once('../models/usuario_equipo.php');
+    require_once('../models/propietario.php');
     require_once('../models/historial_mantenimiento.php');
 
     $admin = $_SESSION['admin'];
     $dep_obj = new Departamentos();
     $equipo_obj = new Equipo();
     $usuario_obj = new Usuario();
-    $usuario_equipo_obj = new UsuarioEquipo();
+    $propietario_obj = new Propietario();
     $hist_obj = new HistorialMantenimiento();
 
     include('header.php');
@@ -90,10 +90,10 @@
             </div>
         </div>
       </div>
-    </form>
+    </form><!--
     <div class="col-2">
       <button class="btn btn-primary" onclick="window.location.href = '../qr/index.php';">Reporte</button>
-    </div>
+    </div>-->
   </div>
 
   <hr>
@@ -107,7 +107,7 @@
           <th>Fecha_esp</th>
           <th>Fecha_real</th>
           <th>Observaciones</th>
-          <th>Usuario</th>
+          <th>Encargado</th>
           <th>Tipo</th>
           <th>Herramientas</th>
         </tr>

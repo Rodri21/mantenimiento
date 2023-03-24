@@ -20,9 +20,9 @@ $html = '
                 <tr>
                 <th>ID</th>
                 <th>Departamento</th>
+                <th>Serie</th>
                 <th>Encargado</th>
                 <th>Propietario</th>
-                <th>Serie</th>
                 <th>Fecha esperada</th>
                 <th>Fecha real</th>
                 <th>Observaciones</th>

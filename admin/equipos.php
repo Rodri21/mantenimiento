@@ -5,7 +5,15 @@
     header('Location: ../index.php');
     exit();
   }
+  
+  require_once __DIR__ . '/../models/equipo.php';
+  require_once __DIR__ . '/../models/departamentos.php';
+  require_once __DIR__ . '/../models/propietario.php';
+
   include('header.php');
+  $equipo_obj = new Equipo();
+  $dep_obj = new Departamentos();
+  $propietario_obj = new Propietario();
 ?>
 <body>
   <div class="container">
@@ -23,20 +31,43 @@
           <br>
           <div class="form-group">
               <label for="departamento">Departamento:</label>
-              <select class="form-select" id="departamento">
-                <option selected>Seleccione una opción</option>
+              <select class="form-select" name="departamento">
+                <?php
+                  $dep_obj->llenar_cbo();
+                ?>
               </select>
           </div>
           <br>
           <div class="form-group">
               <label for="usuario">Usuario:</label>
-              <select class="form-select" id="usuario">
-                <option selected>Seleccione una opción</option>
+              <select class="form-select" name="usuario">
+                <?php
+                  $propietario_obj->llenar_cbo_usuario();
+                ?>
               </select>
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
+  </div>
+  <hr>
+  <div class="container">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Serie</th>
+          <th>Marca</th>
+          <th>Departamento</th>
+          <th>Propietario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          $equipo_obj->llenar_tabla();
+        ?>
+      </tbody>
+    </table>
   </div>
 </body>
 <?php

@@ -5,8 +5,11 @@
     header('Location: ../index.php');
     exit();
   }
-  
   include('header.php');
+
+  require_once __DIR__ . '/../models/usuario_equipo.php';
+  $propietario_obj = new Propietario();
+
 ?>
 <body>
     <div class="container">
@@ -34,6 +37,25 @@
             <br>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
+    </div>
+    <hr>
+    <div class="container">
+        <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Paterno</th>
+            <th>Materno</th>
+            <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $propietario_obj->llenar_tabla();
+            ?>
+        </tbody>
+        </table>
     </div>
 </body>
 <?php

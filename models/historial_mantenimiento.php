@@ -58,22 +58,22 @@ class HistorialMantenimiento{
 
     public function llenar_pdf(){
         $table = '';
-        $result = $this->db->query('
-            SELECT hm.id_historial, d.departamento, u.usuario as propietario, ue.nombre as encargado, e.serie, hm.fecha_esperada, hm.fecha_real, hm.observaciones, hm.tipo_mantenimiento, hm.herramientas
+        $result = $this->db->query("
+            SELECT hm.id_historial, d.departamento, u.usuario as propietario, CONCAT(p.nombre, ' ', p.apellido_pa, ' ', apellido_ma) as encargado, e.serie, hm.fecha_esperada, hm.fecha_real, hm.observaciones, hm.tipo_mantenimiento, hm.herramientas
             FROM historial_mantenimiento hm
             INNER JOIN equipo e ON hm.id_equipo = e.id_equipo
             INNER JOIN departamento d ON e.id_departamento = d.id_departamento
             INNER JOIN usuario u ON hm.id_usuario = u.id_usuario
-            INNER JOIN usuario_equipo ue ON e.id_usuario = ue.id_usuario
+            INNER JOIN propietario p ON e.id_propietario = p.id_propietario
             ORDER BY hm.id_historial;
-        ');
+        ");
         while ($row = pg_fetch_assoc($result)) {
             $table .= '<tr>';
             $table .= "<td>" . $row["id_historial"] . "</td>";
             $table .= "<td>" . $row["departamento"] . "</td>";
+            $table .= "<td>" . $row["serie"] . "</td>";
             $table .= "<td>" . $row["encargado"] . "</td>";
             $table .= "<td>" . $row["propietario"] . "</td>";
-            $table .= "<td>" . $row["serie"] . "</td>";
             $table .= "<td>" . $row["fecha_esperada"] . "</td>";
             $table .= "<td>" . $row["fecha_real"] . "</td>";
             $table .= "<td>" . $row["observaciones"] . "</td>";

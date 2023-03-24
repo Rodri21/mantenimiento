@@ -30,7 +30,6 @@
 					<div class="form-group text-center">
 						<button type="submit" class="btn btn-primary">Iniciar sesión</button>
 					</div>
-					<a href="reports/report2.php">pdf</a>
 				</form>
 			</div>
 		</div>
