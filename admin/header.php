@@ -39,10 +39,10 @@
 						<a class="nav-link" href="/mantenimiento/admin/equipos.php">Equipos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/mantenimiento/admin/usuarios.php">Usuarios</a>
+						<a class="nav-link" href="/mantenimiento/admin/propietarios.php">Propietarios</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/mantenimiento/admin/personal.php">Personal</a>
+						<a class="nav-link" href="/mantenimiento/admin/usuarios.php">Encargados</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/mantenimiento/logout.php">Cerrar sesion</a>

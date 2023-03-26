@@ -18,20 +18,20 @@
 <body>
   <div class="container">
       <h2>Nuevo equipo</h2>
-      <form action="database.php" method="post">
+      <form action="/mantenimiento/controllers/equipo.php" method="post">
           <div class="form-group">
               <label for="serie">Serie:</label>
-              <input type="text" class="form-control" name="serie" id="serie">
+              <input type="text" class="form-control" name="new_serie" id="serie">
           </div>
           <br>
           <div class="form-group">
               <label for="marca">Marca:</label>
-              <input type="text" class="form-control" name="marca" id="marca">
+              <input type="text" class="form-control" name="new_marca" id="marca">
           </div>
           <br>
           <div class="form-group">
               <label for="departamento">Departamento:</label>
-              <select class="form-select" name="departamento">
+              <select class="form-select" name="new_departamento">
                 <?php
                   $dep_obj->llenar_cbo();
                 ?>
@@ -40,7 +40,7 @@
           <br>
           <div class="form-group">
               <label for="usuario">Usuario:</label>
-              <select class="form-select" name="usuario">
+              <select class="form-select" name="new_usuario">
                 <?php
                   $propietario_obj->llenar_cbo_usuario();
                 ?>

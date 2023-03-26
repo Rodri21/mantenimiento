@@ -40,4 +40,20 @@
         $output = pg_fetch_result($result, 0, 0);
         echo $output;
     }
+
+    if (isset($_POST['new_nombre'])) {
+        $nombre = $_POST['new_nombre'];
+        $apellido_pa = $_POST['new_apellido_pa'];
+        $apellido_ma = $_POST['new_apellido_ma'];
+        $correo = $_POST['new_correo'];
+
+        $query = "INSERT INTO propietario (nombre, apellido_pa, apellido_ma, correo) VALUES('$nombre','$apellido_pa','$apellido_ma','$correo');";
+        $result = $db->query($query);
+        echo "
+            <script>
+                alert('Registro guardado');
+            </script>
+        ";
+        header('Location: /mantenimiento/admin/propietarios.php');
+    }
 ?>

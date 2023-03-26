@@ -6,9 +6,9 @@
     require_once('../errors.php');
     require_once('../database.php');
 
-    require '../phpmailer/phpmailer/src/Exception.php';
-    require '../phpmailer/phpmailer/src/PHPMailer.php';
-    require '../phpmailer/phpmailer/src/SMTP.php';
+    require '../phpmailer/src/Exception.php';
+    require '../phpmailer/src/PHPMailer.php';
+    require '../phpmailer/src/SMTP.php';
     
     $db = new Database();
 
@@ -43,13 +43,13 @@
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'testmailtecno@gmail.com';
-        $mail->Password = 'qnyagspyevuubfaz';
+        $mail->Username = 'pruebascorreoitc@gmail.com';
+        $mail->Password = 'msstclsijzgwhpfv';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
         
-        $mail->setFrom('testmailtecno@gmail.com');
+        $mail->setFrom('pruebascorreoitc@gmail.com');
         $mail->addAddress($address);
         $mail->isHTML(true);
         $mail->Subject = "Mantenimiento programado";

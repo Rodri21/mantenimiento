@@ -13,10 +13,10 @@
 ?>
 <div class="container">
     <h2>Nuevo departamento</h2>
-    <form action="database.php" method="post">
+    <form action="/mantenimiento/controllers/departamento.php" method="post">
         <div class="form-group">
             <label for="departamento">Departamento</label>
-            <input type="text" class="form-control" name="departamento" id="departamento">
+            <input type="text" class="form-control" name="new_departamento" id="departamento">
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Guardar</button>

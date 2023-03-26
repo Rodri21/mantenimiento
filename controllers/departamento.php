@@ -15,4 +15,16 @@
         $departamento = pg_fetch_result($result, 0, 0);
         echo $departamento;
     }
+
+    if (isset($_POST['new_departamento'])) {
+        $departamento = $_POST['new_departamento'];
+        $query = "INSERT INTO departamento(departamento) VALUES ('$departamento');";
+        $result = $db->query($query);
+        echo "
+            <script>
+                alert('Registro guardado');
+            </script>
+        ";
+        header('Location: /mantenimiento/admin/departamentos.php');
+    }
 ?>

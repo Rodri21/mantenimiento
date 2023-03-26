@@ -6,9 +6,9 @@
       <div class="col-md-6">
         <h5 class="mb-3">Integrantes del equipo</h5>
         <ul class="list-unstyled">
-          <li>Nombre del integrante 1</li>
-          <li>Nombre del integrante 2</li>
-          <li>Nombre del integrante 3</li>
+          <li>Alfaro Damian Emilio</li>
+          <li>Ortega Camacho Jared</li>
+          <li>Salazar Miranda Edgar Rodrigo</li>
           <li>Nombre del integrante 4</li>
         </ul>
       </div>
